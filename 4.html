@@ -28,7 +28,11 @@
 <script>
   "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+	const userNumber = +prompt("Введите любое положительное целое число");
+	const hundreds = Math.trunc(userNumber/100) % 10;
+	const ten = Math.trunc(userNumber/10) % 10;
+	const unit =  userNumber % 10;
+	alert(`В числе ${userNumber} - сотен ${hundreds} шт, десятков ${ten} шт, единиц ${unit} шт.`);
 </script>
 </body>
 </html>

@@ -21,7 +21,19 @@
 <script>
   "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  const a = +prompt("Введите первое число");
+  const b = +prompt("Введите второе число");
+  function compare_numbers (a, b) {
+    if (a > 0 && b > 0)
+      return (a - b);
+    else if (a < 0 && b < 0)
+      return (a * b);
+    else if (a * b < 0)
+      return (a + b);
+    else 
+      return;
+  }
+  console.log(compare_numbers(a, b));
 </script>
 </body>
 </html>

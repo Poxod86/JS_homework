@@ -31,6 +31,38 @@ Infinity делать не нужно, однако, в случае если б
 -->
 <script>
   "use strict";
+	
+  const a = +prompt("Введите первое число");
+  const b = +prompt("Введите второе число");
+	const c = prompt("Введите один из знаков + - / * ");
+	
+	function summation(num1, num2) {
+    return (num1 + num2);
+  }
+
+  function subtraction(num1, num2) {
+    return Math.abs(num1 - num2);
+  }
+
+  function multiplication(num1, num2) {
+    return (num1 * num2);
+  }
+
+  function division(num1, num2) {
+    return  +(num1 / num2).toFixed(2);
+  }
+
+	function mathOperation (arg1, arg2, operation) {
+		switch (operation) {
+			case "+": return summation(arg1, arg2);
+			case "-": return subtraction(arg1, arg2);
+			case "*": return multiplication(arg1, arg2);
+			case "/": return division(arg1, arg2);
+			default: return NaN;
+		}
+	
+	}
+  console.log(mathOperation(a, b, c)); // 8
 
   // Здесь пишем решение, данный комментарий необходимо стереть.
 </script>

@@ -43,8 +43,12 @@
       price: 78,
     },
   ];
+  console.log(products.filter(
+    element => "photos" in element && element.photos.length !== 0));
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  products.sort
+  ((element1, element2) => element1.price - element2.price);
+  console.log(products)
 </script>
 </body>
 </html>

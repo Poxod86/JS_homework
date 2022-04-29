@@ -28,8 +28,11 @@
       price: 1000,
     },
   ];
-
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  let numCallbackRuns = 0
+  products.forEach((element) => {
+  element.price *= 0.85;
+  numCallbackRuns++
+});
 </script>
 </body>
 </html>

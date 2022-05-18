@@ -50,25 +50,27 @@
 <script>
   "use strict";
 
-  // ES5
+// Первое задание ES5
 function PostES5(name, context) {
   this.name = name;
   this.context = context;
   this.publicDate = new Date();
 }
-  
+
 PostES5.prototype.edit = function(context) {
   this.context = context;
   this.publicDate = new Date();
 }
+
 const post1 = new PostES5('Сергей', 'Это мой первый пост ES5');
 console.log(`${post1.context} \n Автор: ${post1.name} \n Дата публикации: 
 ${post1.publicDate}`);
+
 post1.edit('Это снова мой первый пост ES5');
 console.log(`${post1.context} \n Автор: ${post1.name} \n Дата публикации: 
 ${post1.publicDate}`);
 
-  // ES6
+//  Первое задание ES6
 class PostES6 {
   constructor(name, context) {
   this.name = name;
@@ -80,12 +82,50 @@ class PostES6 {
     this.publicDate = new Date();
   }
 }
+
 const post2 = new PostES6('Сергей', 'Это мой первый пост на ES6');
 console.log(`${post2.context} \n Автор: ${post2.name} \n Дата публикации: 
 ${post2.publicDate}`);
+
 post2.edit('Это снова мой первый пост ES6');
 console.log(`${post2.context} \n Автор: ${post2.name} \n Дата публикации: 
 ${post2.publicDate}`);
+
+// Второе задание ES5
+function AttachedPostES5(name, context, highlighted) {
+  PostES5.call(this, name, context);
+  this.highlighted = false;
+}
+
+AttachedPostES5.prototype = Object.create(PostES5.prototype);
+AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+AttachedPostES5.prototype.makeTextHighlighted = function(highlighted) {
+  this.highlighted = true;
+}
+
+const post3 = new AttachedPostES5('Сергей', 'Это мой закрепленный пост на ES5');
+console.log(post3);
+
+post3.makeTextHighlighted();
+console.log(post3);
+
+// Второе задание ES6
+class AttachedPostES6 extends PostES6 {
+  constructor (name, context, highlighted) {
+    super(name, context);
+    this.highlighted = false;  
+  }
+  makeTextHighlighted(highlighted) {
+    this.highlighted = true;
+  }
+}
+
+const post4 = new AttachedPostES6('Сергей', 'Это мой закрепленный пост на ES6');
+console.log(post4);
+
+post4.makeTextHighlighted();
+console.log(post4);
 </script>
 </body>
 </html>

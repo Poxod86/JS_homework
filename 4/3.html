@@ -31,7 +31,20 @@
 <script>
   "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+function getDigitsOfNumber (number) {
+  if (number < 0 || number > 999 )
+  console.warn (`Введено не корректное значение`);
+  else return (num = {
+  units: Math.trunc(num % 10),
+  dozens: Math.trunc((num % 100)/10),
+  hundreds: Math.trunc(num / 100) 
+  })
+}
+
+let num = prompt('Введите целое положительное число от 0 до 999');
+console.log(getDigitsOfNumber(num));
+
+
 </script>
 </body>
 </html>

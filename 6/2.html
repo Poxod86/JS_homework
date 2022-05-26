@@ -65,16 +65,22 @@
   должно моментально отображаться в span. То есть при печати в input'е тег span
   также должен меняться.
   */
-
-
+  document
+    .querySelector('#from')
+    .addEventListener('input', event => {
+      document.querySelector('span').textContent = event.target.value;
+    });
   /*
   2. При клике на кнопку с классом messageBtn необходимо элементу с классом
   message:
   1) добавить два класса: animate__animated и animate__fadeInLeftBig
   2) поставить данному элементу стиль visibility в значение 'visible'.
    */
-
-
+  const messageEL = document.querySelector('.message');
+  document.querySelector('button').addEventListener ('click', () => {
+    messageEL.style.visibility = 'visible';
+    messageEL.classList.add('animate__animated', 'animate__fadeInLeftBig');
+  });
   /*
   3. Необходимо при отправке формы проверить, заполнены ли все поля в этой
   форме. Если какое-либо поле не заполнено, форма не должна отправляться, также
@@ -86,6 +92,26 @@
   данному полю).
   Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
    */
+  
+  const formEl = document.querySelector('form');
+  const formControlEls = formEl.querySelectorAll('input, select');
+  formEl.addEventListener('submit', event => {
+    formControlEls.forEach(formControlEls => {
+      if (formControlEls.value === '') {
+        formControlEls.classList.add('error');
+        event.preventDefault();
+      }
+    });
+  });
+
+  formEl.addEventListener('input', event => {
+    if (!event.target.classList.contains('form-control')) {
+      return;
+    }
+    event.target.value === ''
+      ? event.target.classList.add('error')
+      : event.target.classList.remove('error');
+  });
 
 
 </script>

@@ -35,14 +35,34 @@
 
   /*
   1. При наведении на любую из звезд, данной звезде должен ставиться класс
-  golden, также такой класс должен ставиться всем звездам до нее слева.
+  , также такой класс должен ставиться всем звездам до нее слева.
   */
-
+  const starsContainerEl = document.querySelector('.stars_container');
+	starsContainerEl.addEventListener('mouseover', event => {
+    if (!event.target.classList.contains('fas')) {
+      return;
+    }
+    let star = event.target;
+      do {
+        star.classList.add('golden');
+        star = star.previousElementSibling;
+      } while (star);
+  });
 
   /*
   2. Когда мы уводим курсор мыши от звезды, все поставленные классы из первого
   задания должны быть удалены.
    */
+  starsContainerEl.addEventListener('mouseout', event => {
+    if (!event.target.classList.contains('fas')) {
+      return;
+    }
+    let star = event.target;
+      do {
+        star.classList.remove('golden');
+        star = star.previousElementSibling;
+      } while (star);
+  });
 
 
   /*
@@ -50,6 +70,14 @@
   звезды (временно могут становиться черными). Почему так? Напишите словами.
   Можем ли мы это исправить? Если да, то предложите решение.
   */
+ /*Звезды могут мигать потому-что курсор мыши может попадать между звездами на 
+ блок родителя  .stars_container  - а т.к. он не имеет класс '.fas' событие не 
+ срабатывает.
+ Решение убрать зазоры между элементами
+ например: дисплей флекс для родителя*/
+  window.addEventListener('load', () => {
+    starsContainerEl.style.display = "flex"
+  });
 
 
 </script>
